@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/audi-type-2');
+    </style>
+    <title>User review</title>
+</head>
+<body>
+    <!-- ////////// ESETLEG BAL OLDALRA EGY MENÜSÁV //////////-->
+    <!--
+    <a href="#" class="hover-effect" onmouseover="changeColor(true)" onmouseout="changeColor(false)">Mutasd meg a hatást</a>
+    <p class="target-element">Ez egy példa szöveg.</p>
+    
+    <script>
+        function changeColor(isHovered) {
+          const targetElement = document.querySelector('.target-element');
+          targetElement.style.color = isHovered ? 'red' : 'black';
+        }
+      </script>
+    -->
+
+    <div class="main_page">
+        <section class="main_header">
+            <div class="logo">
+                <img src="audi_logo2.png" alt="audiLOGO" id="audi-logo" width="185px" height="65px">
+            </div>
+            <div class="title_and_button">
+                <div class="title">NAGIOS USER ACCESS REVIEW</div>
+
+            </div>
+            <div class="login_out">
+                <div class="logged-in-text">
+                    Logged in as: 
+                    <span id="username-logged-in"></span>
+                </div>
+                <div class="logout-button">
+                    <button id="logout-btn" onclick="logout()">Log out</button>
+                </div>
+            </div>
+            
+        </section>
+        <section class="toolbar">
+            <!--FILTERS & CHECKBOXES-->
+            <div class="filters">
+                <div class="system1-filters">
+                    <div class="toggle-system1">
+                        <input type="checkbox" name="" id="system1AllCheckbox" onclick="show_and_hide_AllCheckbox('system1-content', this.id)" disabled>
+                            <label for="system1AllCheckbox">
+                                NAGIOS LDAP
+                            </label>
+                    </div>
+                    <div class="system1-content">
+                        <ul>
+                            <li>
+                                <input type="checkbox" name="" id="system1EmailCheckbox" onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)"  disabled>
+                                <label for="system1EmailCheckbox">
+                                    nagiosEmail
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system1AliasCheckbox" onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)"  disabled>
+                                <label for="system1AliasCheckbox">
+                                    nagiosAlias
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="descriptionCheckbox" onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)"  disabled>
+                                <label for="descriptionCheckbox">
+                                    description
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="CanSubmitCommandCheckbox" onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="CanSubmitCommandCheckbox">
+                                    CanSubmitCommand
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system1GroupsCheckbox" onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system1GroupsCheckbox">
+                                    nagiosGroups
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="entryDNCheckbox" onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="entryDNCheckbox">
+                                    entryDN
+                                </label>
+                            </li>
+                        </ul>
+
+                    </div>
+                    
+                </div>
+                <div class="system2-filters">
+                    <div class="toggle-system2">
+                        <input type="checkbox" name="" id="system2AllCheckbox" onclick="show_and_hide_AllCheckbox('system2-content', this.id)" disabled>
+                        <label for="system2AllCheckbox">
+                            KOALA LDAP - LIVE
+                        </label>
+                    </div>
+                    <div class="system2-content">
+                        <ul>
+                            <li>
+                                <input type="checkbox" name="" id="system2uidCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system2uidCheckbox">
+                                    uid
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system2ntUserAccountCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system2ntUserAccountCheckbox">
+                                    ntUserAccount
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system2StatusCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system2StatusCheckbox">
+                                    KoalaStatus
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system2system1UserCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system2system1UserCheckbox">
+                                    nagiosUser
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system2EmailCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system2EmailCheckbox">
+                                    koalaEmail
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="system3-filters">
+                    <div class="toggle-system3">
+                        <input type="checkbox" name="" id="system3AllCheckbox" onclick="show_and_hide_AllCheckbox('system3-content', this.id)" disabled>
+                        <label for="system3AllCheckbox">
+                            KOALA LDAP - PRELIVE
+                        </label>
+                    </div>
+                    <div class="system3-content">
+                        <ul>
+                            <li>
+                                <input type="checkbox" name="" id="system3uidCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system3uidCheckbox">
+                                    uid
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system3ntUserAccountCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system3ntUserAccountCheckbox">
+                                    ntUserAccount
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system3StatusCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system3StatusCheckbox">
+                                    KoalaPreStatus
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system3system1UserCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system3system1UserCheckbox">
+                                    nagiosUser
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system3EmailCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system3EmailCheckbox">
+                                    system3Email
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="system4-filters">
+                    <div class="toggle-system4">
+                        <input type="checkbox" name="" id="system4AllCheckbox" onclick="show_and_hide_AllCheckbox('system4-content', this.id)" disabled>
+                        <label for="system4AllCheckbox">
+                            ACTIVE DIRECTORY
+                        </label>
+                    </div>
+                    <div class="system4-content">
+                        <ul>
+                            <li>
+                                <input type="checkbox" name="" id="system4samAccountnameCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system4samAccountnameCheckbox">
+                                    samAccountname
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system4StatusCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system4StatusCheckbox">
+                                    ADStatus
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system4displayNameCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system4displayNameCheckbox">
+                                    displayName
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system4EmailCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system4EmailCheckbox">
+                                    ADEmail
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="system4descriptionCheckbox"onclick="show_hide_column(this.id)" onmouseover="markByHover(this.id, true)" onmouseout="markByHover(this.id, false)" disabled>
+                                <label for="system4descriptionCheckbox">
+                                    description
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-and-search">
+                <div class="generate-button">
+                    <button id="generate-btn">GENERATE OUTPUT</button>
+                </div>
+                <button id="reset_filters-btn" onclick="reset_filters()">RESET ALL FILTERS</button>
+                <input type="search" id="text-search-input" placeholder="SEARCH...">
+                <div class="export_file">
+                    <label for="export-file" class="export_file-btn" title="Export File"></label>
+                    <input type="checkbox" id="export-file">
+                    <div class="export_file-options">
+                        <label id="export-as-text">Export As &nbsp; &#10140;</label>
+                        <label for="export-file" id="toJSON">JSON</label>
+                        <label for="export-file" id="toCSV">CSV</label>
+                        <label for="export-file" id="toEXCEL">EXCEL</label>
+                    </div>
+                </div>
+                <!--
+                <button id="quick-query-btn">Quick query</button>
+                <br>
+                <button id="export-to-csv">Export to .csv</button>
+                <br>
+                -->
+                <!--<img src="search.png" alt="">-->
+            </div>
+    
+        </section>
+
+        <main class="table" id="main_table_body">
+            <section class="table_body">
+                <table class="output-table" id="output_table">
+                    <thead>
+                        <tr class="user-info">
+                            <th><div> username <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> STATUS <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> nagiosEmail <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> nagiosAlias <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> Nagios description <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> CanSubmitCommand <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> nagiosGroups <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> entryDN <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <!--SYSTEM2-->
+                            <th><div> uid <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> ntUserAccount <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> koalaStatus <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> SYSTEM1_USER <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> koalaEmail <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <!--SYSTEM3-->
+                            <th><div> uid <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> ntUserAccount <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> koalaStatus <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> SYSTEM1_USER <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> koalaEmail <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <!--ACTIVE DIRECTORY-->
+                            <th><div> samAccountname <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> adStatus <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> displayName <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> adEmail <span class="icon-arrow">&UpArrow;</span></div></th>
+                            <th><div> description <span class="icon-arrow">&UpArrow;</span></div></th>
+                        </tr>
+                    </thead>
+        
+                    <tbody id="userDatas">
+        
+                    </tbody>
+                </table>
+        
+            </section>
+        </main>
+
+        
+    </div>
+    
+    <script src="scripts.js"></script>
+
+</body>
+</html>

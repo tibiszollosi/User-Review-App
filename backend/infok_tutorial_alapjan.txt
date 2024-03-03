@@ -1,0 +1,6 @@
+adatbázis.js -> importálni a mysql/mysql2 modult, kapcsolatot felépíteni vele és műveletek létrehozása: add, get, remove, update
+		információ szerzése a route-hoz és elküldeni az adatbázis.js-nek
+controller.js -> infomrációt szed a route-tól és azzal valamit csinál
+		 importálni kell ide az adatbázis.js-ből az egész export default class adatbázis-t, ami tartalmazza a connectiont és a static async műveleteket (add, get, update, delete stb)
+		 az API műveletek is kerülnek definiálásra
+.route.js -> importálni az express és a 
